@@ -32,15 +32,15 @@ class LoginViewModel : ViewModel() {
             }
         }
 
+    }fun getLoginModel(): LoginModel {
+        return this.loginModel
     }
 
     fun initViewModel() {
         this.loginModel = LoginModel()
     }
 
-    fun getLoginModel(): LoginModel {
-        return this.loginModel
-    }
+
 
     fun onLoginButtonClick() {
         if (loginModel.isValidate()) {

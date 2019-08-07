@@ -17,7 +17,7 @@ class LoginModel : BaseObservable() {
     private val loginFields = LoginFields("", "", null)
 
     companion object {
-        val EMAIL_PATTERN: Pattern = Pattern
+        private val EMAIL_PATTERN: Pattern = Pattern
             .compile(
                 "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
                         "\\@" +
@@ -55,6 +55,7 @@ class LoginModel : BaseObservable() {
         } else {
             this.loginFields.error = error_message
         }
+
         notifyPropertyChanged(BR.loginError)
 
         return valid

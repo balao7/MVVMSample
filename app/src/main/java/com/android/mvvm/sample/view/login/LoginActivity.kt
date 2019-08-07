@@ -23,6 +23,10 @@ class LoginActivity : AppCompatActivity() {
             loginViewModel.initViewModel()
         }
 
+        // Set LoginViewModel to DataBinding.
         loginActivityLoginBinding.viewModel = loginViewModel
+
+        // Specify the current activity as the lifecycle owner.
+        loginActivityLoginBinding.lifecycleOwner = this
     }
 }
