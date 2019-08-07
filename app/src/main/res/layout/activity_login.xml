@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+                name="viewModel"
+                type="com.android.mvvm.sample.view.login.LoginViewModel"/>
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="15dp"
+            tools:context=".view.login.LoginActivity">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="10dp"
+                android:text="Login"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="18sp"
+                app:error="@{viewModel.loginModel.loginError}" />
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:hint="Username"
+                    android:inputType="textPassword"
+                    android:text="@={viewModel.loginModel.email}"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@id/username_switch"
+                    android:ems="10"/>
+
+            <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/username_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:onCheckedChanged="@{(switch, checked) -> viewModel.onShowHideTextCheckedChanged(username, checked)}" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:text="@={viewModel.loginModel.password}"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/password_switch"
+                    android:ems="10"/>
+
+            <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/password_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:onCheckedChanged="@{(switch, checked) -> viewModel.onShowHideTextCheckedChanged(password, checked)}" />
+        </RelativeLayout>
+
+        <Button
+                android:id="@+id/login_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="28dp"
+                android:layout_gravity="center_horizontal"
+                android:text="Login"
+                android:onClick="@{() -> viewModel.onLoginButtonClick()}"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

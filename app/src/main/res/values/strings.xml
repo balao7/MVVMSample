@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MVVM-Sample</string>
+
+    <string name="error_message">Invalid Login entry. Please check email address and password.</string>
+</resources>
