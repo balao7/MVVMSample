@@ -33,7 +33,7 @@
                 android:layout_gravity="center_horizontal"
                 android:textColor="@android:color/holo_red_dark"
                 android:textSize="18sp"
-                app:error="@{viewModel.loginModel.loginError}" />
+                app:error="@{viewModel.loginModel.loginError}"/>
 
         <RelativeLayout
                 android:layout_width="match_parent"
@@ -62,7 +62,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
-                    android:onCheckedChanged="@{(switch, checked) -> viewModel.onShowHideTextCheckedChanged(username, checked)}" />
+                    android:onCheckedChanged="@{(switch, checked) -> viewModel.onShowHideTextCheckedChanged(username, checked)}"/>
 
         </RelativeLayout>
 
@@ -90,7 +90,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
-                    android:onCheckedChanged="@{(switch, checked) -> viewModel.onShowHideTextCheckedChanged(password, checked)}" />
+                    android:onCheckedChanged="@{(switch, checked) -> viewModel.onShowHideTextCheckedChanged(password, checked)}"/>
         </RelativeLayout>
 
         <Button
@@ -101,6 +101,16 @@
                 android:layout_gravity="center_horizontal"
                 android:text="Login"
                 android:onClick="@{() -> viewModel.onLoginButtonClick()}"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Forgot Password"/>
+
+        <androidx.appcompat.widget.SwitchCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

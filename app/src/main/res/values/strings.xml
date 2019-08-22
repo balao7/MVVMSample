@@ -2,4 +2,9 @@
     <string name="app_name">MVVM-Sample</string>
 
     <string name="error_message">Invalid Login entry. Please check email address and password.</string>
+    <string name="title_activity_home">Home</string>
+    <string name="title_home">Home</string>
+    <string name="title_activities">Activities</string>
+    <string name="title_resources">Resources</string>
+    <string name="title_shop">Shop</string>
 </resources>
