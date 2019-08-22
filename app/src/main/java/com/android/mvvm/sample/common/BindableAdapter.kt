@@ -2,7 +2,6 @@ package com.android.mvvm.sample.common
 
 interface BindableAdapter<T> {
 
-    fun setData(data: List<T>)
-    fun changePosition(positions: Set<Int>)
-
+    fun setListData(list: List<T>?)
+    fun changePositions(positions: Set<Int>)
 }

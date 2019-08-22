@@ -10,47 +10,18 @@ import com.android.mvvm.sample.R
 import com.android.mvvm.sample.common.BindableAdapter
 
 class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>(),
-    BindableAdapter<HomeData> {
+    BindableAdapter<HomeListData> {
 
-    private var homeListData: List<HomeData> = listOf(
-        HomeData(
-            "Valid up to 2020",
-            "Asset holder for marketing",
-            "$20",
-            "https://cititel.com/wp-content/uploads/2016/03/Banner-Medical-Answering-Services-1.png"
-        ),
-        HomeData(
-            "",
-            "Asset holder for managers",
-            "$25",
-            "https://cititel.com/wp-content/uploads/2016/03/Banner-Medical-Answering-Services-1.png"
-        ),
-        HomeData(
-            "",
-            "Asset holder for ceo's",
-            "$50",
-            "https://cititel.com/wp-content/uploads/2016/03/Banner-Medical-Answering-Services-1.png"
-        ),
-        HomeData(
-            "",
-            "Asset holder for clerks",
-            "$10",
-            "https://cititel.com/wp-content/uploads/2016/03/Banner-Medical-Answering-Services-1.png"
-        ),
-        HomeData(
-            "",
-            "Asset holder for IT dept",
-            "$10",
-            "https://cititel.com/wp-content/uploads/2016/03/Banner-Medical-Answering-Services-1.png"
-        )
-    )
+    private var homeListListData: List<HomeListData> = emptyList()
 
-    override fun setData(data: List<HomeData>) {
-        this.homeListData = data
-        this.notifyDataSetChanged()
+    override fun setListData(list: List<HomeListData>?) {
+        list?.let {
+            this.homeListListData = it
+            notifyDataSetChanged()
+        }
     }
 
-    override fun changePosition(positions: Set<Int>) =
+    override fun changePositions(positions: Set<Int>) =
         positions.forEach { this.notifyItemChanged(it) }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
@@ -67,7 +38,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>(),
      * @return The total number of items in this adapter.
      */
     override fun getItemCount(): Int {
-        return this.homeListData.size
+        return this.homeListListData.size
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -75,14 +46,14 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>(),
     }
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
-        holder.bind(homeListData[position])
+        holder.bind(homeListListData[position])
     }
 
     class HomeViewHolder(private val viewDataBinding: ViewDataBinding) :
         RecyclerView.ViewHolder(viewDataBinding.root) {
 
-        fun bind(homeData: HomeData) {
-            this.viewDataBinding.setVariable(BR.homedata, homeData)
+        fun bind(homeListData: HomeListData) {
+            this.viewDataBinding.setVariable(BR.homeListData, homeListData)
             this.viewDataBinding.executePendingBindings()
         }
     }

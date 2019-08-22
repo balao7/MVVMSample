@@ -38,6 +38,13 @@ class HomeFragment : Fragment() {
         this.homeFragmentBinding?.let {
             it.viewmodel = viewmodel
             it.homeAdapter = homeAdapter
+
+            this.viewmodel.startLoadHomeListHandler()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        this.viewmodel.stopLoadHomeListHandler()
     }
 }
