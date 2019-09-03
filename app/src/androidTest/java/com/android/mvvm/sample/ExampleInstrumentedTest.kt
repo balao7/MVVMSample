@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("com.android.mvvm.sample", appContext.packageName)
+        assertEquals("com.android.mvvm.sample_arrow_layout", appContext.packageName)
     }
 }
