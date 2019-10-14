@@ -10,6 +10,15 @@ import dagger.android.ContributesAndroidInjector
 
 // https://github.com/azabost/simple-mvvm-example
 
+// https://stackoverflow.com/questions/52030693/injecting-viewmodels-with-an-activity-context-dependency
+
+// https://github.com/balao7/dagger-androidinjector
+
+// https://github.com/balao7/Dagger2Recipes-ActivitiesMultibinding
+
+// https://github.com/android/architecture-components-samples/tree/master/GithubBrowserSample
+
+
 @Module
 abstract class ActivityBuildersModule {
 
