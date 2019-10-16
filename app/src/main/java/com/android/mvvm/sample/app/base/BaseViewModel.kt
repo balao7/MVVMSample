@@ -10,14 +10,11 @@ open class BaseViewModel<M : BaseObservable> @Inject constructor(@NonNull privat
 
     protected lateinit var model: M
 
-    override val compositeDisposable: CompositeDisposable = CompositeDisposable()
-
     fun init() {
         this.model = modelClass.newInstance()
     }
 
     override fun onCleared() {
-        clearDisposables()
         super.onCleared()
     }
 }

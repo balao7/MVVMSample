@@ -3,6 +3,7 @@ package com.android.mvvm.sample.di
 import android.app.Application
 import com.android.mvvm.sample.MVVMApplication
 import com.android.mvvm.sample.di.modules.AppModule
+import com.android.mvvm.sample.di.scope.ApplicationScope
 import com.android.mvvm.sample.view.ActivityBuildersModule
 import dagger.BindsInstance
 import dagger.Component
@@ -13,6 +14,7 @@ import javax.inject.Singleton
 /**
  * Application component refers to application level modules only
  */
+@ApplicationScope
 @Singleton
 @Component(
     modules = [
@@ -31,5 +33,4 @@ interface AppComponent : AndroidInjector<MVVMApplication> {
 
         fun build(): AppComponent
     }
-
 }

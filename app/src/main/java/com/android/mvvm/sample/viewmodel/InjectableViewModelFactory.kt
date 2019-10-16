@@ -1,15 +1,16 @@
-package com.android.mvvm.sample.app
+package com.android.mvvm.sample.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import dagger.Lazy
 import javax.inject.Inject
 
-class ViewModelFactory<VM : ViewModel> @Inject constructor(
+class InjectableViewModelFactory<VM : ViewModel> @Inject constructor(
     private val viewModel: Lazy<VM>
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return viewModel.value as T
+        return viewModel.get() as T
     }
 }
 

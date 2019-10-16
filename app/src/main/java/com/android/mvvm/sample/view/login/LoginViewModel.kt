@@ -11,15 +11,19 @@ import androidx.databinding.BindingAdapter
 import androidx.lifecycle.ViewModel
 import com.android.mvvm.sample.R
 import com.android.mvvm.sample.view.login.model.LoginModel
+import javax.inject.Inject
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel @Inject constructor(
+    private val loginRepository: LoginRepository?
+) : ViewModel() {
 
     private lateinit var loginModel: LoginModel
 
     object BindingAdapters {
 
         @BindingAdapter("error")
-        @JvmStatic fun TextView.bindLoginErrorText(stringOrResId: Any?) {
+        @JvmStatic
+        fun TextView.bindLoginErrorText(stringOrResId: Any?) {
             if (stringOrResId != null) {
                 if (stringOrResId is String)
                     this.text = stringOrResId
@@ -43,9 +47,15 @@ class LoginViewModel : ViewModel() {
     }
 
     fun onLoginButtonClick() {
+        if (this.loginRepository != null) {
+            Log.d("LoginViewModel", "LoginRepository has injected.")
+        }
         if (loginModel.isValidate()) {
             // TODO: Call Webservice here.
-            Log.d("LoginViewModel", "User: "+loginModel.email + ", Password:- " +loginModel.password)
+            Log.d(
+                "LoginViewModel",
+                "User: " + loginModel.email + ", Password:- " + loginModel.password
+            )
         }
     }
 
@@ -56,13 +66,17 @@ class LoginViewModel : ViewModel() {
             if (it.isNotEmpty()) {
                 if (checked) {
                     when {
-                        appCompatEditText.id == R.id.username -> appCompatEditText.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
-                        appCompatEditText.id == R.id.password -> appCompatEditText.inputType = InputType.TYPE_CLASS_TEXT
+                        appCompatEditText.id == R.id.username -> appCompatEditText.inputType =
+                            InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
+                        appCompatEditText.id == R.id.password -> appCompatEditText.inputType =
+                            InputType.TYPE_CLASS_TEXT
                     }
 
-                    appCompatEditText.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                    appCompatEditText.transformationMethod =
+                        HideReturnsTransformationMethod.getInstance()
                 } else {
-                    appCompatEditText.transformationMethod = PasswordTransformationMethod.getInstance()
+                    appCompatEditText.transformationMethod =
+                        PasswordTransformationMethod.getInstance()
                 }
 
                 // Set EditText Selection.

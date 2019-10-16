@@ -4,6 +4,7 @@ import androidx.annotation.LayoutRes
 import androidx.annotation.NonNull
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.a3i.android.eventzapp.features.base.BaseActivity
 import javax.inject.Inject
@@ -15,7 +16,7 @@ abstract class BaseViewModelActivity<VB : ViewDataBinding, out VM : ViewModel>(
 ) : BaseActivity<VB>(layoutResID) {
 
     @Inject
-    protected lateinit var provideFactory: ViewModelProvideFactory
+    protected lateinit var provideFactory: ViewModelProvider.Factory
 
     protected val viewModel: VM by lazy {
         ViewModelProviders.of(this, provideFactory).get(viewModelClass.java)

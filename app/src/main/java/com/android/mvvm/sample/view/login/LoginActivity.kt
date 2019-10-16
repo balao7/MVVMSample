@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.android.mvvm.sample.R
-import com.android.mvvm.sample.app.ViewModelFactory
+import com.android.mvvm.sample.viewmodel.InjectableViewModelFactory
 import com.android.mvvm.sample.databinding.ActivityLoginBinding
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
@@ -12,10 +12,10 @@ import javax.inject.Inject
 class LoginActivity : DaggerAppCompatActivity() {
 
     @Inject
-    lateinit var viewModelFactory: ViewModelFactory<LoginViewModel>
+    lateinit var injectableViewModelFactory: InjectableViewModelFactory<LoginViewModel>
 
     private val loginViewModel: LoginViewModel by lazy {
-        ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel::class.java)
+        ViewModelProviders.of(this, injectableViewModelFactory).get(LoginViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
